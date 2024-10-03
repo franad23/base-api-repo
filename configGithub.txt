@@ -41,3 +41,5 @@ Pega la clave SSH que copiaste y guarda.
 
 5. Configurar Git para usar SSH en tu repositorio
 Si ya tienes un repositorio clonado usando HTTPS, puedes cambiarlo a SSH con el siguiente comando:
+
+DESPUES AGREGAR EMAIL Y NOMBRE
