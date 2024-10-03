@@ -1,0 +1,43 @@
+Verificar si ya tienes una clave SSH
+Primero, verifica si ya tienes una clave SSH generada en tu máquina:
+
+bash
+Copiar código
+ls -al ~/.ssh
+Si ves archivos como id_rsa e id_rsa.pub, entonces ya tienes una clave SSH. Si no, tendrás que generar una nueva.
+
+2. Generar una nueva clave SSH (si no tienes)
+Si no tienes una clave SSH, puedes generarla usando el siguiente comando:
+
+bash
+Copiar código
+ssh-keygen -t rsa -b 4096 -C "tu-email@ejemplo.com"
+Cuando te pregunte la ubicación para guardar la clave, presiona Enter para guardarla en la ubicación predeterminada (~/.ssh/id_rsa).
+También puedes dejar el campo de passphrase en blanco, o establecer una contraseña si prefieres mayor seguridad.
+3. Añadir la clave SSH al agente SSH
+Si ya tienes una clave SSH (o la acabas de generar), asegúrate de que el agente SSH está corriendo y añade la clave al agente:
+
+Inicia el agente SSH:
+
+bash
+Copiar código
+eval "$(ssh-agent -s)"
+Añade tu clave SSH al agente:
+
+bash
+Copiar código
+ssh-add ~/.ssh/id_rsa
+4. Añadir la clave SSH a GitHub
+Debes agregar tu clave SSH pública a GitHub para que te reconozca.
+
+Copia la clave pública SSH en tu portapapeles:
+
+bash
+Copiar código
+cat ~/.ssh/id_rsa.pub
+Ve a tu cuenta de GitHub y navega a Settings > SSH and GPG keys > New SSH Key.
+
+Pega la clave SSH que copiaste y guarda.
+
+5. Configurar Git para usar SSH en tu repositorio
+Si ya tienes un repositorio clonado usando HTTPS, puedes cambiarlo a SSH con el siguiente comando:
